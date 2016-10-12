@@ -5,7 +5,11 @@ import Publication from '../views/publication';
 
 class App extends Component {
   static propTypes = {
-  	publications: PropTypes.array.isRequired,
+  	publication: PropTypes.shape({
+      publications: PropTypes.array.isRequired,
+      errorMessage: PropTypes.string,
+      isFetching: PropTypes.bool.isRequired,
+    }).isRequired,
   	fetchPublications: PropTypes.func.isRequired,
   }
 
@@ -13,29 +17,37 @@ class App extends Component {
   	this.props.fetchPublications();
   }
 
-  renderPublication(publication) {
-    return (
-    	<Publication key={publication.id} data={publication} />
-    )
-  }
-
   render() {
 
-    const { publications } = this.props
-
-    return (
-      <div>
-      	Publication list:
-      	<ul>
-        	{publications.map(this.renderPublication)}
+    const publicationList = this.props.publication.publications.map((publication) => (
+      <Publication key={publication.id} data={publication} />
+    ));
+    
+    let componentToBeDisplayed;
+    if (this.props.publication.isFetching) {
+      componentToBeDisplayed = <div>Loading...</div>
+    }
+    else if (this.props.publication.errorMessage !== '') {
+      componentToBeDisplayed = <div>{this.props.publication.errorMessage}</div>
+    }
+    else {
+     componentToBeDisplayed = 
+     <div>
+        Publication list:
+        <ul>
+          {publicationList}
         </ul>
       </div>
+    }
+
+    return (
+      componentToBeDisplayed
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  publications: state.publications
+  publication: state.publication
 })
 
 const mapDispatchToProps = (dispatch) => ({

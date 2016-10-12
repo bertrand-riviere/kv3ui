@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import publications from './publications';
+import publication from './publication';
 
 const rootReducers = combineReducers({
-  publications,
+  publication,
   // Add other reducers here
 });
 
