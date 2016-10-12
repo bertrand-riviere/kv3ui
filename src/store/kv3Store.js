@@ -2,7 +2,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
-const logger = (store) => (next) => (action) => {
+// const logger = (store) => (next) => (action) => {
+const logger = () => (next) => (action) => {
   if (typeof action !== 'function') {
     console.log('dispatching:', action);
   }
