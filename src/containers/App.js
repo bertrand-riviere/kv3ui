@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import publicationActionCreators from '../actions/publicationActionCreators';
-import Publication from '../views/publication';
+import PublicationList from '../views/publicationList';
 
 class App extends Component {
   static propTypes = {
@@ -19,10 +19,6 @@ class App extends Component {
 
   render() {
 
-    const publicationList = this.props.publication.publications.map((publication) => (
-      <Publication key={publication.id} data={publication} />
-    ));
-    
     let componentToBeDisplayed;
     if (this.props.publication.isFetching) {
       componentToBeDisplayed = <div>Loading...</div>
@@ -32,12 +28,7 @@ class App extends Component {
     }
     else {
      componentToBeDisplayed = 
-     <div>
-        Publication list:
-        <ul>
-          {publicationList}
-        </ul>
-      </div>
+        <PublicationList data={this.props.publication.publications} />
     }
 
     return (
