@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import publicationActionCreators from '../actions/publicationActionCreators';
+import Nav from '../views/nav';
 import Publication from './publication';
 
 class App extends Component {
@@ -14,7 +15,11 @@ class App extends Component {
     const componentToBeDisplayed = children === null ? (<Publication />) : (<div>{children}</div>);
 
     return (
-      componentToBeDisplayed
+      <div>
+        <Nav />
+        <br />
+        {componentToBeDisplayed}
+      </div>
     )
   }
 }

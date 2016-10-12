@@ -17,7 +17,7 @@ const publication = (state = initialState, action) => {
         ...state,
         publications: [],
         isFetching: false,
-        errorMessage: 'Error occured (details: ${action.error.toString()})',
+        errorMessage: action.error.toString(),
       };
     default:
       return state;
