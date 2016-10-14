@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react';
 import Publication from './publication';
 
-const PublicationList = (props) => {
-  const { data } = props;
-
+const PublicationList = ({ data }) => {
   const publicationList = data.map((publication) => (
     <Publication key={publication.id} data={publication} />
   ));

@@ -1,20 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
-const Nav = (props) => {
-  return (
+const Nav = () => 
     <div>
-        
         <Link to='/'>Home</Link> | 
         <Link
           to='admin'
           activeStyle={{
             textDecoration: 'none',
-            color: 'black'
+            color: 'black',
           }}
         >Admin</Link>
-      </div>
-  );
-};
+      </div>;
 
 export default Nav;

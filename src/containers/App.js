@@ -1,18 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import publicationActionCreators from '../actions/publicationActionCreators';
+import _ from 'lodash';
 import Nav from '../views/nav';
 import Publication from './publication';
 
 class App extends Component {
-  static propTypes = {
-    // Injected by React Router
-    children: PropTypes.node,
-  }
 
   render() {
     const { children } = this.props;
-    const componentToBeDisplayed = children === null ? (<Publication />) : (<div>{children}</div>);
+
+    const componentToBeDisplayed = _.isNull(children) ? (<Publication />) : (<div>{children}</div>);
 
     return (
       <div>
@@ -20,8 +17,12 @@ class App extends Component {
         <br />
         {componentToBeDisplayed}
       </div>
-    )
+    );
   }
 }
 
-export default connect()(App)
+App.propTypes = {
+  children: PropTypes.node,
+};
+
+export default connect()(App);
