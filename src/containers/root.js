@@ -1,17 +1,24 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import routes from '../routes';
-import { Router } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-const Root = ({ store, history }) => (
+import App from './App';
+import Publication from './publication';
+import Admin from '../views/admin';
+
+const Root = ({ store }) => (
   <Provider store={store}>
-    <Router history={history} routes={routes} />
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Publication} />
+        <Route path="/admin" component={Admin} />
+      </Route>
+    </Router>
   </Provider>
 );
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
 };
 
 export default Root;
