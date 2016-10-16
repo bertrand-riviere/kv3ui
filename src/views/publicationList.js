@@ -8,10 +8,10 @@ const PublicationList = ({ data }) => {
 
   return (
     <div>
-    Publication list:
-        <ul>
-          {publicationList}
-        </ul>
+      <strong>Publication list:</strong>
+      <ul>
+        {publicationList}
+      </ul>
     </div>
   );
 };

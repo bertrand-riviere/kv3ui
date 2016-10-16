@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
+
 import publicationActionCreators from '../actions/publicationActionCreators';
 import PublicationList from '../views/publicationList';
 
@@ -14,7 +16,7 @@ class Publication extends Component {
 
     let componentToBeDisplayed;
     if (publication.isFetching) {
-      componentToBeDisplayed = <div>Loading...</div>;
+      componentToBeDisplayed = <Spin tip="Loading..." />;
     } else if (publication.errorMessage !== '') {
       componentToBeDisplayed = <div>{publication.errorMessage}</div>;
     } else {
