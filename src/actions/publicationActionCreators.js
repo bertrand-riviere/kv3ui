@@ -7,12 +7,10 @@ const publicationActionCreators = {
       dispatch({ type: PUBLICATIONS_REQUEST });
 
       publicationAPI.fetchPublications().then(
-        // Add delay to simulate long api call
-        // so that the loading logic can be seen on screen
-        (publications) => setTimeout(() => {
+        (result) => {
+          const publications = result.results;
           dispatch({ type: PUBLICATIONS_RECEIVE, publications });
-        }, 500),
-        // (publications) => dispatch({ type: PUBLICATIONS_RECEIVE, publications }),
+        },
 
         (error) => dispatch({ type: PUBLICATIONS_FAILURE, error })
       );

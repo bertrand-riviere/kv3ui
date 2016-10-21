@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react';
 
-const Publication = ({ data }) =>
-    (<li>{data.title} (id: {data.id})</li>);
+const Publication = ({ publication }) =>
+    (<li>
+      {publication.title} (id:{ " " }
+      <a href="Expression/Details/{publication.id}">{publication.id}</a>)
+    </li>);
 
 Publication.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  publication: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
 };

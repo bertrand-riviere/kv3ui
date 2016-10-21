@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import Publication from './publication';
 
-const PublicationList = ({ data }) => {
-  const publicationList = data.map((publication) => (
-    <Publication key={publication.id} data={publication} />
+const PublicationList = ({ publications }) => {
+  const publicationList = publications.map((publication) => (
+    <Publication key={publication.id} publication={publication} />
   ));
 
   return (
@@ -17,7 +17,7 @@ const PublicationList = ({ data }) => {
 };
 
 PublicationList.propTypes = {
-  data: PropTypes.array.isRequired,
+  publications: PropTypes.array.isRequired,
 };
 
 export default PublicationList;

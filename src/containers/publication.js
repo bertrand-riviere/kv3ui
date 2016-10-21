@@ -16,11 +16,17 @@ class Publication extends Component {
 
     let componentToBeDisplayed;
     if (publication.isFetching) {
-      componentToBeDisplayed = <Spin tip="Loading..." />;
+      componentToBeDisplayed =
+                              (<div>
+                                <Spin tip="Loading..." size="large" />
+                                <br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br />
+                              </div>);
     } else if (publication.errorMessage !== '') {
       componentToBeDisplayed = <div>{publication.errorMessage}</div>;
     } else {
-      componentToBeDisplayed = <PublicationList data={publication.publications} />;
+      componentToBeDisplayed = <PublicationList publications={publication.publications} />;
     }
 
     return (
