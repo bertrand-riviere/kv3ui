@@ -5,13 +5,11 @@ const publicationActionCreators = {
   fetchPublications() {
     return (dispatch) => {
       dispatch({ type: PUBLICATIONS_REQUEST });
-
-      publicationAPI.fetchPublications().then(
+      return publicationAPI.fetchPublications().then(
         (result) => {
           const publications = result.results;
           dispatch({ type: PUBLICATIONS_RECEIVE, publications });
         },
-
         (error) => dispatch({ type: PUBLICATIONS_FAILURE, error })
       );
     };

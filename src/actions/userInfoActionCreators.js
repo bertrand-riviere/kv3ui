@@ -5,8 +5,7 @@ const userInfoActionCreators = {
   fetchUserInfo() {
     return (dispatch) => {
       dispatch({ type: USERINFO_REQUEST });
-
-      userInfoAPI.fetchUserInfo().then(
+      return userInfoAPI.fetchUserInfo().then(
         (userInfo) => dispatch({ type: USERINFO_RECEIVE, userInfo }),
         (error) => dispatch({ type: USERINFO_FAILURE, error })
       );
