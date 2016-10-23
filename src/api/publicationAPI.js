@@ -1,9 +1,12 @@
-import 'whatwg-fetch';
+import { fetchJson } from '../utils/fetchUtil';
 
 const publicationAPI = {
   fetchPublications() {
-    return fetch('http://localhost/Api/Search', { credentials: 'include' })
-    .then((response) => response.json());
+    return fetchJson(
+      'http://localhost/Api/Search',
+      (data) => data.results,
+      { credentials: 'include' }
+      );
   },
 };
 

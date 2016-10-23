@@ -6,8 +6,7 @@ const publicationActionCreators = {
     return (dispatch) => {
       dispatch({ type: PUBLICATIONS_REQUEST });
       return publicationAPI.fetchPublications().then(
-        (result) => {
-          const publications = result.results;
+        (publications) => {
           dispatch({ type: PUBLICATIONS_RECEIVE, publications });
         },
         (error) => dispatch({ type: PUBLICATIONS_FAILURE, error })

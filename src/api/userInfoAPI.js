@@ -1,9 +1,12 @@
-import 'whatwg-fetch';
+import { fetchJson } from '../utils/fetchUtil';
 
 const userInfoAPI = {
   fetchUserInfo() {
-    return fetch('http://localhost/Api/WhoAmI', { credentials: 'include' })
-    .then((response) => response.json());
+    return fetchJson(
+      'http://localhost/Api/WhoAmI',
+      (data) => data,
+      { credentials: 'include' }
+      );
   },
 };
 
