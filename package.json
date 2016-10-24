@@ -10,6 +10,7 @@
   "author": "Bertrand Riviere",
   "license": "",
   "devDependencies": {
+    "enzyme": "^2.5.1",
     "expect": "^1.20.2",
     "nock": "^8.1.0",
     "redux-mock-store": "^1.2.1",
